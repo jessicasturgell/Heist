@@ -7,10 +7,10 @@ namespace Heist
 
         public int DifficultyLevel { get; set; }
 
-        public Bank(string name)
+        public Bank(string name, int difficultyLevel)
         {
             Name = name;
-            DifficultyLevel = 100;
+            DifficultyLevel = difficultyLevel;
         }
     }
 }
