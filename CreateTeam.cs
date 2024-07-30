@@ -2,7 +2,7 @@ namespace Heist
 {
     public class CreateTeam
     {
-        public static void CreateTeamMembers()
+        public static int CreateTeamMembers()
         {
             string? teamMemberName;
 
@@ -79,6 +79,11 @@ namespace Heist
                 Console.WriteLine($"   Skill Level: {teamMember.SkillLevel}");
                 Console.WriteLine($"   Courage Factor: {teamMember.CourageFactor}");
             }
+
+            int totalSkill = teamMembers.Sum(tMObj => tMObj.SkillLevel);
+            Console.WriteLine($"\nYour team's total skill level is {totalSkill}.");
+
+            return totalSkill;
         }
     }
 }
