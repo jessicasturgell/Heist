@@ -19,4 +19,11 @@ public class Muscle : IRobber
             Console.WriteLine($"{Name} has incapacitated the guards!");
         }
     }
+
+    public Muscle(string name, int skillLevel, int percentageCut)
+    {
+        Name = name;
+        SkillLevel = skillLevel;
+        PercentageCut = percentageCut;
+    }
 }

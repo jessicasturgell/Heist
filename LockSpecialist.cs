@@ -19,4 +19,11 @@ public class LockSpecialist : IRobber
             Console.WriteLine($"{Name} has broken into the vault!");
         }
     }
+
+    public LockSpecialist(string name, int skillLevel, int percentageCut)
+    {
+        Name = name;
+        SkillLevel = skillLevel;
+        PercentageCut = percentageCut;
+    }
 }
