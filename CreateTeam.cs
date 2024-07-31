@@ -10,13 +10,22 @@ namespace Heist
 
             while (true)
             {
-                Console.Write("Enter Team Member's Name (or press Enter to finish): ");
+                Console.Write("Enter New Team Member's Name (or press Enter to finish): ");
                 teamMemberName = Console.ReadLine();
 
                 if (string.IsNullOrEmpty(teamMemberName))
                 {
                     break;
                 }
+
+                Console.WriteLine("Choose a specialty for this operative.");
+                Console.WriteLine("Possible Specialties:");
+                Console.WriteLine("  1) Hacker (Disables alarms)");
+                Console.WriteLine("  2) Muscle (Disarms guards)");
+                Console.WriteLine("  3) Lock Specialist (cracks vault)");
+                Console.Write("Selection (1-3): ");
+
+                string teamMemberSpecialty = Console.ReadLine();
 
                 string skillInput = "";
                 int teamMemberSkillLevel = 0;
