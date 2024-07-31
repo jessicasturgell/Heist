@@ -1,4 +1,6 @@
-﻿namespace Heist
+﻿// In the Main method, create a List<IRobber> and store it in a variable named rolodex. This list will contain all possible operatives that we could employ for future heists. We want to give the user the opportunity to add new operatives to this list, but for now let's pre-populate the list with 5 or 6 robbers (give it a mix of Hackers, Lock Specialists, and Muscle).
+
+namespace Heist
 {
     class Program
     {
