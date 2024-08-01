@@ -9,37 +9,12 @@ namespace Heist
             Random random = new Random();
             Console.WriteLine("Plan Your Heist!");
 
-            // construct bank
-            // int bankDifficulty = 0;
-            // bool isValidDifficulty = false;
-            // while (!isValidDifficulty)
-            // {
-            //     Console.WriteLine("What is the difficulty level of the bank you plan to rob?");
-            //     Console.Write("Difficulty Level: ");
-            //     string difficultyInput = Console.ReadLine() ?? "";
-            //     try
-            //     {
-            //         bankDifficulty = Int32.Parse(difficultyInput);
-            //         isValidDifficulty = true;
-            //     }
-            //     catch (FormatException)
-            //     {
-            //         Console.WriteLine("Please enter a valid numeric difficulty level.");
-            //     }
-            // }
             int alarmScore = random.Next(0, 101);
             int vaultScore = random.Next(0, 101);
             int securityGuardScore = random.Next(0, 101);
             int cashOnHand = random.Next(50000, 1000001);
 
-            Bank bank = new Bank(
-                "Bank",
-                // bankDifficulty,
-                cashOnHand,
-                alarmScore,
-                vaultScore,
-                securityGuardScore
-            );
+            Bank bank = new Bank("Bank", cashOnHand, alarmScore, vaultScore, securityGuardScore);
 
             if (alarmScore > vaultScore && alarmScore > securityGuardScore)
             {
@@ -79,13 +54,12 @@ namespace Heist
 
             if (bank.IsSecure)
             {
-            Console.WriteLine($"Failed to take out bank security. Crew is returning to base.");
+                Console.WriteLine($"Failed to take out bank security. Crew is returning to base.");
             }
             else
             {
                 Console.WriteLine($"Heist successful! Your crew has uncovered ${bank.CashOnHand}.");
             }
-
 
             // int trialRuns = 0;
             // int trialRunsNeeded = 0;

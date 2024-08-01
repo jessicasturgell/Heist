@@ -8,7 +8,6 @@ namespace Heist
         // Public Properties
         public string Name { get; }
 
-        // public int DifficultyLevel { get; set; }
         public int CashOnHand { get; set; }
         public int AlarmScore { get; set; }
         public int VaultScore { get; set; }
@@ -22,7 +21,6 @@ namespace Heist
 
         public Bank(
             string name,
-            // int difficultyLevel,
             int cashOnHand,
             int alarmScore,
             int vaultScore,
@@ -30,7 +28,6 @@ namespace Heist
         )
         {
             Name = name;
-            // DifficultyLevel = difficultyLevel;
             CashOnHand = cashOnHand;
             AlarmScore = alarmScore;
             VaultScore = vaultScore;
