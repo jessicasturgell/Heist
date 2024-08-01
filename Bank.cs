@@ -22,10 +22,21 @@ namespace Heist
             }
         }
 
-        public Bank(string name, int difficultyLevel)
+        public Bank(
+            string name,
+            int difficultyLevel,
+            int cashOnHand,
+            int alarmScore,
+            int vaultScore,
+            int securityGuardScore
+        )
         {
             Name = name;
             DifficultyLevel = difficultyLevel;
+            CashOnHand = cashOnHand;
+            AlarmScore = alarmScore;
+            VaultScore = vaultScore;
+            SecurityGuardScore = securityGuardScore;
         }
     }
 }

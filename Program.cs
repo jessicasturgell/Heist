@@ -6,6 +6,7 @@ namespace Heist
     {
         static void Main()
         {
+            Random random = new Random();
             Console.WriteLine("Plan Your Heist!");
 
             // construct bank
@@ -26,8 +27,45 @@ namespace Heist
                     Console.WriteLine("Please enter a valid numeric difficulty level.");
                 }
             }
+            int alarmScore = random.Next(0, 101);
+            int vaultScore = random.Next(0, 101);
+            int securityGuardScore = random.Next(0, 101);
+            int cashOnHand = random.Next(50000, 1000001);
 
-            Bank bank = new Bank("Bank", bankDifficulty);
+            Bank bank = new Bank(
+                "Bank",
+                bankDifficulty,
+                cashOnHand,
+                alarmScore,
+                vaultScore,
+                securityGuardScore
+            );
+
+            if (alarmScore > vaultScore && alarmScore > securityGuardScore)
+            {
+                Console.WriteLine($"Most Secure: Alarms");
+            }
+            if (vaultScore > alarmScore && vaultScore > securityGuardScore)
+            {
+                Console.WriteLine($"Most Secure: Vaults");
+            }
+            if (securityGuardScore > alarmScore && securityGuardScore > vaultScore)
+            {
+                Console.WriteLine($"Most Secure: Guards");
+            }
+
+            if (alarmScore < vaultScore && alarmScore < securityGuardScore)
+            {
+                Console.WriteLine($"Least Secure: Alarms");
+            }
+            if (vaultScore < alarmScore && vaultScore < securityGuardScore)
+            {
+                Console.WriteLine($"Least Secure: Vaults");
+            }
+            if (securityGuardScore < alarmScore && securityGuardScore < vaultScore)
+            {
+                Console.WriteLine($"Least Secure: Guards");
+            }
 
             //constructs team and returns total skill level
             int totalSkill = CreateTeam.CreateTeamMembers();
@@ -55,7 +93,6 @@ namespace Heist
                 while (trialRuns < trialRunsNeeded)
                 {
                     // generate a random number between -10 and 10 for heist's luck value
-                    Random random = new Random();
                     int luckValue = random.Next(-10, 11);
 
                     // compare team member skill to bank difficulty
