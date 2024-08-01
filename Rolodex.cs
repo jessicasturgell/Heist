@@ -9,12 +9,12 @@ namespace Heist
         {
             string? teamMemberName;
             // This list will contain all possible operatives that we could employ for future heists.
-            Hacker nolon = new("Nolon", 25, 10);
-            Hacker oleta = new("Oleta", 25, 10);
-            Muscle larry = new("Larry", 25, 10);
-            Muscle laisha = new("Laisha", 25, 10);
-            LockSpecialist faustino = new("Faustino", 25, 10);
-            LockSpecialist claire = new("Claire", 25, 10);
+            Hacker nolon = new("Nolon", 25, 10, 1);
+            Hacker oleta = new("Oleta", 25, 10, 1);
+            Muscle larry = new("Larry", 25, 10, 2);
+            Muscle laisha = new("Laisha", 25, 10, 2);
+            LockSpecialist faustino = new("Faustino", 25, 10, 3);
+            LockSpecialist claire = new("Claire", 25, 10, 3);
             List<IRobber> rolodex = new List<IRobber>()
             {
                 nolon,
@@ -89,7 +89,7 @@ namespace Heist
                     skillInput = Console.ReadLine() ?? "";
                     try
                     {
-                        teamMemberSkillLevel = Int32.Parse(skillInput);
+                        teamMemberSkillLevel = int.Parse(skillInput);
                         isValidSkillLevel = true;
                     }
                     catch (FormatException)
@@ -100,33 +100,33 @@ namespace Heist
 
                 Console.Write("Enter Operative's Percentage Cut: ");
 
-                int teamMemberPercentageCut = Int32.Parse(Console.ReadLine() ?? "");
+                int teamMemberPercentageCut = int.Parse(Console.ReadLine() ?? "");
 
                 if (teamMemberSpecialty == "1")
                 {
                     Hacker operative =
-                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut, 1);
                     rolodex.Add(operative);
                     Console.WriteLine(
-                        $"You just added {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
+                        $"You just added Hacker {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
                     );
                 }
                 if (teamMemberSpecialty == "2")
                 {
                     Muscle operative =
-                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut, 2);
                     rolodex.Add(operative);
                     Console.WriteLine(
-                        $"You just added {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
+                        $"You just added Muscle {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
                     );
                 }
                 if (teamMemberSpecialty == "3")
                 {
                     LockSpecialist operative =
-                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut, 3);
                     rolodex.Add(operative);
                     Console.WriteLine(
-                        $"You just added {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
+                        $"You just added Lock Specialist {operative.Name} to your rolodex. Their skill level is {operative.SkillLevel}. Their percentage cut is {operative.PercentageCut}%."
                     );
                 }
             }

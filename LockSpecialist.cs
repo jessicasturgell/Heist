@@ -5,6 +5,7 @@ public class LockSpecialist : IRobber
     public string Name { get; set; }
     public int SkillLevel { get; set; }
     public int PercentageCut { get; set; }
+    public int TeamMemberSpecialty { get; set; }
 
     public void PerformSkill(Bank bank)
     {
@@ -20,10 +21,11 @@ public class LockSpecialist : IRobber
         }
     }
 
-    public LockSpecialist(string name, int skillLevel, int percentageCut)
+    public LockSpecialist(string name, int skillLevel, int percentageCut, int teamMemberSpecialty)
     {
         Name = name;
         SkillLevel = skillLevel;
         PercentageCut = percentageCut;
+        TeamMemberSpecialty = teamMemberSpecialty;
     }
 }

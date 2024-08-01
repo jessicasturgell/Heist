@@ -10,23 +10,23 @@ namespace Heist
             Console.WriteLine("Plan Your Heist!");
 
             // construct bank
-            int bankDifficulty = 0;
-            bool isValidDifficulty = false;
-            while (!isValidDifficulty)
-            {
-                Console.WriteLine("What is the difficulty level of the bank you plan to rob?");
-                Console.Write("Difficulty Level: ");
-                string difficultyInput = Console.ReadLine() ?? "";
-                try
-                {
-                    bankDifficulty = Int32.Parse(difficultyInput);
-                    isValidDifficulty = true;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Please enter a valid numeric difficulty level.");
-                }
-            }
+            // int bankDifficulty = 0;
+            // bool isValidDifficulty = false;
+            // while (!isValidDifficulty)
+            // {
+            //     Console.WriteLine("What is the difficulty level of the bank you plan to rob?");
+            //     Console.Write("Difficulty Level: ");
+            //     string difficultyInput = Console.ReadLine() ?? "";
+            //     try
+            //     {
+            //         bankDifficulty = Int32.Parse(difficultyInput);
+            //         isValidDifficulty = true;
+            //     }
+            //     catch (FormatException)
+            //     {
+            //         Console.WriteLine("Please enter a valid numeric difficulty level.");
+            //     }
+            // }
             int alarmScore = random.Next(0, 101);
             int vaultScore = random.Next(0, 101);
             int securityGuardScore = random.Next(0, 101);
@@ -34,7 +34,7 @@ namespace Heist
 
             Bank bank = new Bank(
                 "Bank",
-                bankDifficulty,
+                // bankDifficulty,
                 cashOnHand,
                 alarmScore,
                 vaultScore,
@@ -69,7 +69,7 @@ namespace Heist
 
             // gets rolodex and returns list of operatives
             List<IRobber> rolodex = Rolodex.CreateRolodex();
-            //constructs team and returns total skill level
+            // constructs team and returns total skill level
             int totalSkill = CreateTeam.CreateTeamMembers(rolodex);
 
             // int trialRuns = 0;

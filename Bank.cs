@@ -7,7 +7,8 @@ namespace Heist
     {
         // Public Properties
         public string Name { get; }
-        public int DifficultyLevel { get; set; }
+
+        // public int DifficultyLevel { get; set; }
         public int CashOnHand { get; set; }
         public int AlarmScore { get; set; }
         public int VaultScore { get; set; }
@@ -16,15 +17,12 @@ namespace Heist
         // If all the scores are less than or equal to 0, this should be false. If any of the scores are above 0, this should be true
         public bool IsSecure
         {
-            get
-            {
-                return CashOnHand > 0 || AlarmScore > 0 || VaultScore > 0 || SecurityGuardScore > 0;
-            }
+            get { return AlarmScore > 0 || VaultScore > 0 || SecurityGuardScore > 0; }
         }
 
         public Bank(
             string name,
-            int difficultyLevel,
+            // int difficultyLevel,
             int cashOnHand,
             int alarmScore,
             int vaultScore,
@@ -32,7 +30,7 @@ namespace Heist
         )
         {
             Name = name;
-            DifficultyLevel = difficultyLevel;
+            // DifficultyLevel = difficultyLevel;
             CashOnHand = cashOnHand;
             AlarmScore = alarmScore;
             VaultScore = vaultScore;
