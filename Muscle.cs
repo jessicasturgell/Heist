@@ -15,7 +15,7 @@ public class Muscle : IRobber
             $"{Name} is taking out the security guards. Decreased security by {SkillLevel} points."
         );
         // If the appropriate security score has be reduced to 0 or below, print a message to the console
-        if (bank.SecurityGuardScore == 0)
+        if (bank.SecurityGuardScore <= 0)
         {
             Console.WriteLine($"{Name} has incapacitated the guards!");
         }

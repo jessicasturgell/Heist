@@ -70,7 +70,22 @@ namespace Heist
             // gets rolodex and returns list of operatives
             List<IRobber> rolodex = Rolodex.CreateRolodex();
             // constructs team and returns total skill level
-            int totalSkill = CreateTeam.CreateTeamMembers(rolodex);
+            List<IRobber> teamMembers = CreateTeam.CreateTeamMembers(rolodex);
+
+            foreach (var teamMember in teamMembers)
+            {
+                teamMember.PerformSkill(bank);
+            }
+
+            if (bank.IsSecure)
+            {
+            Console.WriteLine($"Failed to take out bank security. Crew is returning to base.");
+            }
+            else
+            {
+                Console.WriteLine($"Heist successful! Your crew has uncovered ${bank.CashOnHand}.");
+            }
+
 
             // int trialRuns = 0;
             // int trialRunsNeeded = 0;

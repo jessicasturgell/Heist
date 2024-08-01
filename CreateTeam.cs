@@ -5,7 +5,7 @@ namespace Heist
 {
     public class CreateTeam
     {
-        public static int CreateTeamMembers(List<IRobber> rolodex)
+        public static List<IRobber> CreateTeamMembers(List<IRobber> rolodex)
         {
             List<IRobber> teamMembers = new List<IRobber>();
             while (true)
@@ -66,7 +66,7 @@ namespace Heist
             Console.WriteLine("Team Members:");
             foreach (IRobber teamMember in teamMembers)
             {
-                string specialSkill;
+                string specialSkill = "None";
                 if (teamMember.TeamMemberSpecialty == 1)
                 {
                     specialSkill = "Hacker";
@@ -79,20 +79,16 @@ namespace Heist
                 {
                     specialSkill = "Lock Specialist";
                 }
-                else
-                {
-                    specialSkill = "None";
-                }
                 Console.WriteLine($"\n   Name: {teamMember.Name}");
                 Console.WriteLine($"   Class: {specialSkill}");
                 Console.WriteLine($"   Skill Level: {teamMember.SkillLevel}");
                 Console.WriteLine($"   Percentage Cut: {teamMember.PercentageCut}");
             }
 
-            int totalSkill = teamMembers.Sum(tMObj => tMObj.SkillLevel);
-            Console.WriteLine($"\nYour team's total skill level is {totalSkill}.");
+            // int totalSkill = teamMembers.Sum(tMObj => tMObj.SkillLevel);
+            // Console.WriteLine($"\nYour team's total skill level is {totalSkill}.");
 
-            return totalSkill;
+            return teamMembers;
         }
     }
 }

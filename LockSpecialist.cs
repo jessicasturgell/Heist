@@ -15,7 +15,7 @@ public class LockSpecialist : IRobber
             $"{Name} is breaking into the vault. Decreased security by {SkillLevel} points."
         );
         // If the appropriate security score has be reduced to 0 or below, print a message to the console
-        if (bank.VaultScore == 0)
+        if (bank.VaultScore <= 0)
         {
             Console.WriteLine($"{Name} has broken into the vault!");
         }

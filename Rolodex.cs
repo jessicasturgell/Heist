@@ -9,12 +9,12 @@ namespace Heist
         {
             string? teamMemberName;
             // This list will contain all possible operatives that we could employ for future heists.
-            Hacker nolon = new("Nolon", 25, 10, 1);
-            Hacker oleta = new("Oleta", 25, 10, 1);
-            Muscle larry = new("Larry", 25, 10, 2);
-            Muscle laisha = new("Laisha", 25, 10, 2);
-            LockSpecialist faustino = new("Faustino", 25, 10, 3);
-            LockSpecialist claire = new("Claire", 25, 10, 3);
+            Hacker nolon = new("Nolon", 50, 10, 1);
+            Hacker oleta = new("Oleta", 50, 10, 1);
+            Muscle larry = new("Larry", 50, 10, 2);
+            Muscle laisha = new("Laisha", 50, 10, 2);
+            LockSpecialist faustino = new("Faustino", 50, 10, 3);
+            LockSpecialist claire = new("Claire", 50, 10, 3);
             List<IRobber> rolodex = new List<IRobber>()
             {
                 nolon,
