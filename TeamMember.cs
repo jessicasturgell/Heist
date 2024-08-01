@@ -6,14 +6,16 @@ namespace Heist
         public string Name { get; }
 
         public int SkillLevel { get; }
+        public int PercentageCut { get; }
 
-        public double CourageFactor { get; }
+        // public double CourageFactor { get; }
 
-        public TeamMember(string name, int skillLevel, double courageFactor)
+        public TeamMember(string name, int skillLevel, int percentageCut)
         {
             Name = name;
             SkillLevel = skillLevel;
-            CourageFactor = courageFactor;
+            PercentageCut = percentageCut;
+            // CourageFactor = courageFactor;
         }
     }
 }
