@@ -7,9 +7,7 @@ namespace Heist
     {
         // Public Properties
         public string Name { get; }
-
         public int DifficultyLevel { get; set; }
-
         public int CashOnHand { get; set; }
         public int AlarmScore { get; set; }
         public int VaultScore { get; set; }

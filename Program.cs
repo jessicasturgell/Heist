@@ -29,27 +29,6 @@ namespace Heist
 
             Bank bank = new Bank("Bank", bankDifficulty);
 
-            // This list will contain all possible operatives that we could employ for future heists.
-            Hacker nolon = new("Nolon", 50, 25);
-            Hacker oleta = new("Oleta", 50, 25);
-            LockSpecialist faustino = new("Faustino", 50, 25);
-            LockSpecialist claire = new("Claire", 50, 25);
-            Muscle larry = new("Larry", 50, 25);
-            Muscle laisha = new("Laisha", 50, 25);
-            List<IRobber> rolodex = new List<IRobber>()
-            {
-                nolon,
-                oleta,
-                faustino,
-                claire,
-                larry,
-                laisha
-            };
-
-            Console.WriteLine(
-                $"There are currently {rolodex.Count} possible operatives in your rolodex."
-            );
-
             //constructs team and returns total skill level
             int totalSkill = CreateTeam.CreateTeamMembers();
 

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.Marshalling;
+
 namespace Heist
 {
     public class CreateTeam
@@ -7,6 +9,27 @@ namespace Heist
             string? teamMemberName;
 
             List<TeamMember> teamMembers = new List<TeamMember>() { };
+
+            // This list will contain all possible operatives that we could employ for future heists.
+            Hacker nolon = new("Nolon", 25, 10);
+            Hacker oleta = new("Oleta", 25, 10);
+            LockSpecialist faustino = new("Faustino", 25, 10);
+            LockSpecialist claire = new("Claire", 25, 10);
+            Muscle larry = new("Larry", 25, 10);
+            Muscle laisha = new("Laisha", 25, 10);
+            List<IRobber> rolodex = new List<IRobber>()
+            {
+                nolon,
+                oleta,
+                faustino,
+                claire,
+                larry,
+                laisha
+            };
+
+            Console.WriteLine(
+                $"There are currently {rolodex.Count} possible operatives in your rolodex."
+            );
 
             while (true)
             {
@@ -45,51 +68,99 @@ namespace Heist
                     }
                 }
 
-                string courageInput = "";
-                double teamMemberCourageFactor = 0.0;
-                bool isValidCourageFactor = false;
-                while (!isValidCourageFactor)
+                Console.Write("Enter Team Member's Percentage Cut: ");
+
+                int teamMemberPercentageCut = Int32.Parse(Console.ReadLine());
+
+                // string courageInput = "";
+                // double teamMemberCourageFactor = 0.0;
+                // bool isValidCourageFactor = false;
+                // while (!isValidCourageFactor)
+                // {
+                //     Console.Write("Enter Team Member's Courage Factor: ");
+                //     courageInput = Console.ReadLine() ?? "";
+                //     try
+                //     {
+                //         teamMemberCourageFactor = Double.Parse(courageInput);
+                //         if (teamMemberCourageFactor >= 0.0 && teamMemberCourageFactor <= 2.0)
+                //         {
+                //             isValidCourageFactor = true;
+                //         }
+                //         else
+                //         {
+                //             Console.WriteLine("Courage factor must be a value between 0 and 2.");
+                //         }
+                //     }
+                //     catch (FormatException)
+                //     {
+                //         Console.WriteLine("Please enter a valid numeric courage factor.");
+                //     }
+                // }
+
+                if (teamMemberSpecialty == "1")
                 {
-                    Console.Write("Enter Team Member's Courage Factor: ");
-                    courageInput = Console.ReadLine() ?? "";
-                    try
-                    {
-                        teamMemberCourageFactor = Double.Parse(courageInput);
-                        if (teamMemberCourageFactor >= 0.0 && teamMemberCourageFactor <= 2.0)
-                        {
-                            isValidCourageFactor = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Courage factor must be a value between 0 and 2.");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Please enter a valid numeric courage factor.");
-                    }
+                    Hacker operative =
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                    rolodex.Add(operative);
+                    Console.WriteLine(
+                        $"You just added {operative.Name} to your team. Their Skill Level is {operative.SkillLevel}. Their Courage Factor is {operative.PercentageCut}."
+                    );
                 }
-                TeamMember teamMember = new TeamMember(
-                    teamMemberName,
-                    teamMemberSkillLevel,
-                    teamMemberCourageFactor
-                );
-                teamMembers.Add(teamMember);
-                Console.WriteLine(
-                    $"You just added {teamMember.Name} to your team. Their Skill Level is {teamMember.SkillLevel}. Their Courage Factor is {teamMember.CourageFactor}."
-                );
+                if (teamMemberSpecialty == "2")
+                {
+                    Muscle operative =
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                    rolodex.Add(operative);
+                    Console.WriteLine(
+                        $"You just added {operative.Name} to your team. Their Skill Level is {operative.SkillLevel}. Their Courage Factor is {operative.PercentageCut}."
+                    );
+                }
+                if (teamMemberSpecialty == "3")
+                {
+                    LockSpecialist operative =
+                        new(teamMemberName, teamMemberSkillLevel, teamMemberPercentageCut);
+                    rolodex.Add(operative);
+                    Console.WriteLine(
+                        $"You just added {operative.Name} to your team. Their Skill Level is {operative.SkillLevel}. Their Courage Factor is {operative.PercentageCut}."
+                    );
+                }
+
+                // TeamMember teamMember = new TeamMember(
+                //     teamMemberName,
+                //     teamMemberSkillLevel,
+                //     teamMemberCourageFactor
+                // );
+                // teamMembers.Add(teamMember);
+                // Console.WriteLine(
+                //     $"You just added {operative.Name} to your team. Their Skill Level is {operative.SkillLevel}. Their Courage Factor is {operative.teamMemberPercentageCut}."
+                // );
             }
 
-            Console.WriteLine($"Your team has {teamMembers.Count} member(s).");
+            Console.WriteLine($"Your team has {rolodex.Count} member(s).");
             Console.WriteLine("Team Members:");
-            foreach (TeamMember teamMember in teamMembers)
+            Console.WriteLine("\nHackers:");
+            foreach (IRobber operative in rolodex.OfType<Hacker>())
             {
-                Console.WriteLine($"\n   Name: {teamMember.Name}");
-                Console.WriteLine($"   Skill Level: {teamMember.SkillLevel}");
-                Console.WriteLine($"   Courage Factor: {teamMember.CourageFactor}");
+                Console.WriteLine($"\n   Name: {operative.Name}");
+                Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
+                Console.WriteLine($"   Courage Factor: {operative.PercentageCut}");
+            }
+            Console.WriteLine("\nMuscle:");
+            foreach (IRobber operative in rolodex.OfType<Muscle>())
+            {
+                Console.WriteLine($"\n   Name: {operative.Name}");
+                Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
+                Console.WriteLine($"   Courage Factor: {operative.PercentageCut}");
+            }
+            Console.WriteLine("\nLock Specialists:");
+            foreach (IRobber operative in rolodex.OfType<LockSpecialist>())
+            {
+                Console.WriteLine($"\n   Name: {operative.Name}");
+                Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
+                Console.WriteLine($"   Courage Factor: {operative.PercentageCut}");
             }
 
-            int totalSkill = teamMembers.Sum(tMObj => tMObj.SkillLevel);
+            int totalSkill = rolodex.Sum(tMObj => tMObj.SkillLevel);
             Console.WriteLine($"\nYour team's total skill level is {totalSkill}.");
 
             return totalSkill;
