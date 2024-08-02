@@ -1,6 +1,4 @@
-﻿// In the Main method, create a List<IRobber> and store it in a variable named rolodex. This list will contain all possible operatives that we could employ for future heists. We want to give the user the opportunity to add new operatives to this list, but for now let's pre-populate the list with 5 or 6 robbers (give it a mix of Hackers, Lock Specialists, and Muscle).
-
-namespace Heist
+﻿namespace Heist
 {
     class Program
     {
@@ -46,6 +44,7 @@ namespace Heist
             List<IRobber> rolodex = Rolodex.CreateRolodex();
             // constructs team and returns total skill level
             List<IRobber> teamMembers = CreateTeam.CreateTeamMembers(rolodex);
+            int playerCut = 100 - teamMembers.Sum(tMObj => tMObj.PercentageCut);
 
             foreach (var teamMember in teamMembers)
             {
@@ -59,55 +58,14 @@ namespace Heist
             else
             {
                 Console.WriteLine($"Heist successful! Your crew has uncovered ${bank.CashOnHand}.");
+                foreach (var teamMember in teamMembers)
+                {
+                    Console.WriteLine(
+                        $"   {teamMember.Name} received ${bank.CashOnHand / teamMember.PercentageCut}."
+                    );
+                }
+                Console.Write($"   You received ${bank.CashOnHand / playerCut}.");
             }
-
-            // int trialRuns = 0;
-            // int trialRunsNeeded = 0;
-            // int successfulRuns = 0;
-            // int failedRuns = 0;
-            // bool isValidTrialRuns = false;
-            // while (!isValidTrialRuns)
-            // {
-            //     Console.WriteLine("How many trial runs would you like to simulate with this team?");
-            //     Console.Write("Trial Runs: ");
-            //     string trialRunInput = Console.ReadLine() ?? "";
-            //     try
-            //     {
-            //         trialRunsNeeded = Int32.Parse(trialRunInput);
-            //         isValidTrialRuns = true;
-            //     }
-            //     catch (FormatException)
-            //     {
-            //         Console.WriteLine("Please enter a valid number.");
-            //     }
-
-            //     while (trialRuns < trialRunsNeeded)
-            //     {
-            //         // generate a random number between -10 and 10 for heist's luck value
-            //         int luckValue = random.Next(-10, 11);
-
-            //         // compare team member skill to bank difficulty
-            //         if ((totalSkill + luckValue) < bank.DifficultyLevel)
-            //         {
-            //             Console.WriteLine(
-            //                 $"Trial Run #{trialRuns + 1}: You failed your heist. Still poor."
-            //             );
-            //             successfulRuns++;
-            //         }
-            //         else
-            //         {
-            //             Console.WriteLine(
-            //                 $"Trial Run #{trialRuns + 1}: Success! You're not poor anymore."
-            //             );
-            //             failedRuns++;
-            //         }
-
-            //         trialRuns++;
-            //     }
-            //     Console.WriteLine(
-            //         $"Out of {trialRuns} trial runs, {successfulRuns} succeeded and {failedRuns} failed."
-            //     );
-            // }
         }
     }
 }
