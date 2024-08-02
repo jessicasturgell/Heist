@@ -10,14 +10,17 @@ public class LockSpecialist : IRobber
     public void PerformSkill(Bank bank)
     {
         // Take the Bank parameter and decrement its appropriate security score by the SkillLevel. i.e. A Hacker with a skill level of 50 should decrement the bank's AlarmScore by 50.
-        bank.VaultScore -= SkillLevel;
-        Console.WriteLine(
-            $"{Name} is breaking into the vault. Decreased security by {SkillLevel} points."
-        );
-        // If the appropriate security score has be reduced to 0 or below, print a message to the console
-        if (bank.VaultScore <= 0)
+        if (bank.VaultScore > 0)
         {
-            Console.WriteLine($"{Name} has broken into the vault!");
+            bank.VaultScore -= SkillLevel;
+            Console.WriteLine(
+                $"{Name} is breaking into the vault. Decreased security by {SkillLevel} points."
+            );
+            // If the appropriate security score has be reduced to 0 or below, print a message to the console
+            if (bank.VaultScore <= 0)
+            {
+                Console.WriteLine($"{Name} has broken into the vault!");
+            }
         }
     }
 

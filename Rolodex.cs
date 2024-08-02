@@ -35,7 +35,6 @@ namespace Heist
                     Console.WriteLine($"\n   Name: {operative.Name}");
                     Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
                     Console.WriteLine($"   Percentage Cut: {operative.PercentageCut}%");
-                    Console.WriteLine($"   Index: {index}");
                 }
                 Console.WriteLine("\nMuscle:");
                 foreach (IRobber operative in rolodex.OfType<Muscle>())
@@ -44,7 +43,6 @@ namespace Heist
                     Console.WriteLine($"\n   Name: {operative.Name}");
                     Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
                     Console.WriteLine($"   Percentage Cut: {operative.PercentageCut}%");
-                    Console.WriteLine($"   Index: {index}");
                 }
                 Console.WriteLine("\nLock Specialists:");
                 foreach (IRobber operative in rolodex.OfType<LockSpecialist>())
@@ -53,7 +51,6 @@ namespace Heist
                     Console.WriteLine($"\n   Name: {operative.Name}");
                     Console.WriteLine($"   Skill Level: {operative.SkillLevel}");
                     Console.WriteLine($"   Percentage Cut: {operative.PercentageCut}%");
-                    Console.WriteLine($"   Index: {index}");
                 }
             }
 
